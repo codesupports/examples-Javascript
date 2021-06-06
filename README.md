@@ -11,17 +11,18 @@
 }  
 </script>
 
-===============================================================================================
+=================================================================================
 <h2>Javascript array foreach function</h2>
-var a = ["Banana", "Orange", "Apple", "Mango"];
-var txt = "";
-a.forEach(myFunc);
+var a = ["Banana", "Orange", "Apple", "Mango"];  <br/>
+var txt = "";    <br/>
+a.forEach(myFunc);   <br/>
 
 function myFunc(value){
     console.log(value);
 }
-//output
-Banana
-Orange
-Apple
-Mango
+<br/>
+<b>//output</b><br/>
+Banana<br/>
+Orange<br/>
+Apple<br/>
+Mango<br/>
