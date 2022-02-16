@@ -10,6 +10,6 @@ var arr = ["Ram", "Raj", "Ravi","Moh","Sita","Biz"];
 
 arr.sort((a,b)=>{
     return a-b;
-})
+}) 
 
 //output ['Ram', 'Raj', 'Ravi', 'Moh', 'Sita', 'Biz']

@@ -8,7 +8,7 @@
   <script>  
   function myFunction(id) {
     document.getElementById("container").style.borderColor = document.getElementById(id).value;
-}  
+}   
 </script>
 
 =================================================================================

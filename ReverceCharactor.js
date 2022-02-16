@@ -12,6 +12,7 @@ const reverseString =(str)=> {
         newString += str[i];
     }
     return newString;
+    
 }
 reverseString(name);
 // output 'ramuK jaR'
