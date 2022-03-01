@@ -1,8 +1,8 @@
-const uniqueCount = ["a","b","c","d","d","e","a","b","c","f","g","h","h","h","e","a"];
+const uniqueCount = ["a","b","c","d","d","d","d"];
 
 const count ={};
 uniqueCount.forEach((x)=>{
-    count[x] = (count[x] || 0) 
+    count[x] = (count[x]+1 || 1) 
 })
 
 // output {a: 3, b: 2, c: 2, d: 2, e: 2,}
