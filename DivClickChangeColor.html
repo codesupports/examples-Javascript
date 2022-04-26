@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul li {
+            display: inline-flex;
+            padding: 50px;
+            border: 1px solid #ccc;
+            background-color: aqua;
+        }
+        .red{background-color: red;}
+    </style>
+
+</head>
+
+<body>
+    <ul>
+        <li class="element" onclick="myfunc(event)">Div</li>
+        <li class="element" onclick="myfunc(event)">Div</li>
+        <li class="element" onclick="myfunc(event)">Div</li>
+        <li class="element red" onclick="myfunc(event)">Div</li>
+        <li class="element" onclick="myfunc(event)">Div</li>
+    </ul>
+    <script>
+       const div = document.querySelectorAll('ul li ');
+        for (let i=0; i<div.length; i++){
+            div[i].addEventListener('click', function(){
+                var current = document.getElementsByClassName("red");
+                 current[0].className = current[0].className.replace(" red", "");
+                 this.className = this.className + " red";
+            })
+        }
+
+
+    // function myfunc(e){
+    //     console.log(e.target.className);
+    //     e.target.className = "";
+    // }
+
+    </script>
+</body>
+
+</html>
