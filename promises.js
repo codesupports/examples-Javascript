@@ -4,6 +4,8 @@ const promise1 = new Promise((resolve, reject)=>{
     },1000)
 })
 
-promise1.then((res)=>{
+promise1.then((res)=>{    
     console.log(res)
+}).catch((err)=>{
+    console.log(err)
 })
