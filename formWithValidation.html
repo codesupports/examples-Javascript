@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Validation- JS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: rgb(34, 26, 164);
+            background: linear-gradient(90deg, rgba(34, 26, 164, 1) 0%, rgba(184, 0, 255, 1) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 14px;
+        }
+
+        .form {
+            background-color: #f4f4f4;
+            width: 300px;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 1px -1px 10px 10px #33333380;
+        }
+
+        h3 {
+            text-align: center;
+            font-size: 18px;
+            color: #5e5e5e;
+        }
+
+        .form__block label {
+            display: block;
+            padding: 5px 0;
+            color: #333;
+        }
+
+        .form__block input {
+            border: 1px solid #ccc;
+            line-height: 20px;
+            border-radius: 4px;
+            width: 100%;
+            padding: 5px 10px;
+            font-size: 14px;
+            color: #333;
+        }
+
+        .form__block span {
+            font-size: 11px;
+            background-color: #ff000020;
+            padding: 2px 5px;
+            border-radius: 2px;
+            margin: 3px 0 0 0;
+            color: red;
+            display: none;
+        }
+
+        .form__block span.success {
+            font-size: 11px;
+            background-color: #00ff1130 !important;
+            padding: 5px;
+            border-radius: 4px;
+            margin: 3px 0 0 0;
+            color: green;
+            border: 0 !important;
+        }
+
+        .form__block button {
+            width: 100%;
+            border: 1px solid rgb(33, 124, 243);
+            background: rgb(2, 0, 36);
+            background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 29%, rgba(184, 0, 255, 1) 100%);
+            padding: 8px;
+            margin: 10px 0 0;
+            color: #fff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .error {
+            border: 1px solid red !important;
+        }
+
+        .success {
+            border: 1px solid rgb(5, 173, 5) !important;
+            background-color: #def1de !important;
+        }
+
+        input:focus {
+            outline: none;
+
+        }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:active {
+            transition: background-color 5000s ease-in-out 0s;
+            -webkit-box-shadow: 0 0 0px 1000px #def1de inset;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form">
+        <h3>Form</h3>
+        <form id="myForm" method="">
+            <div class="form__block">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email">
+                <span id="emailError"></span>
+            </div>
+            <div class="form__block">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+                <span id="passwordError"></span>
+            </div>
+            <div class="form__block">
+                <label for="password">Phone:</label>
+                <input type="text" id="phone" name="phone">
+                <span id="phoneError"></span>
+            </div>
+            <div class="form__block">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password')
+            const phoneInput = document.getElementById('phone');
+
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+            const phoneError = document.getElementById('phoneError');
+
+            emailInput.addEventListener('keyup', validateEmail);
+            passwordInput.addEventListener('keyup', validatePassword);
+            phoneInput.addEventListener('keyup', validatePhone)
+
+            function validateEmail() {
+                const emailValue = emailInput.value;
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+                if (!emailPattern.test(emailValue)) {
+                    emailError.textContent = 'Please enter a valid email address.';
+                    emailError.style.display = "block";
+                    emailInput.classList.add('error');
+                    emailInput.classList.remove('success');
+                } else {
+                    emailError.textContent = 'now is valid email';
+                    emailError.classList.add('success')
+                    emailError.style.display = "block";
+                    emailInput.classList.add('success')
+                }
+            }
+
+            function validatePassword() {
+                const passwordValue = passwordInput.value;
+
+                if (passwordValue.length <= 6) {
+                    passwordError.textContent = 'Password must be at least 6 characters long.';
+                    passwordError.style.display = "block";
+                    passwordInput.classList.add('error')
+                    passwordInput.classList.remove('success')
+                } else {
+                    passwordError.textContent = 'now is valid';
+                    passwordError.classList.add('success')
+                    passwordInput.classList.add('success')
+                }
+            }
+
+            function validatePhone() {
+                const phoneValue = phoneInput.value;
+
+                if (phoneValue.length < 10) {
+                    phoneError.textContent = 'Please input 10 digit';
+                    phoneError.style.display = "block";
+                    phoneInput.classList.add('error')
+                    phoneInput.classList.remove('success')
+                } else {
+                    phoneError.textContent = 'Now is valid';
+                    phoneError.classList.add('success')
+                    phoneInput.classList.add('success')
+                }
+            }
+
+            document.getElementById('myForm').addEventListener('submit', function (event) {
+                // Prevent form submission if there are validation errors
+                if (emailInput.value == "" || passwordInput.value === "" || phoneInput.value === "") {
+                    event.preventDefault();
+                    alert('Please fix the errors before submitting the form.');
+
+                    emailError.textContent = 'Please enter a valid email address.';
+                    emailInput.classList.add('error')
+                    emailError.style.display = "block";
+                    passwordError.style.display = "block";
+                    phoneError.style.display = "block";
+
+                    passwordError.textContent = 'Password must be at least 6 characters long.';
+                    passwordInput.classList.add('error')
+                    phoneError.textContent = 'Please input 10 digit';
+                    phoneInput.classList.add('error')
+                } else {
+                    alert('form submit successfully');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
