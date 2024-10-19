@@ -32,7 +32,27 @@ function throttle(func, delay) {
 
 const throatFun = throttle(clickBtn, 1000)
 
+# Second Way ---------------------
+<button id="throttle" onclick="callThrottle()">Click Me </button>
+    
+function getData() {
+    console.log('Button Clicked')
+}
 
+function throttle(callback, limit) {
+    let timeout = 0;
+
+    function inner() {
+        const now = Date.now(); // current timestamp in milliseconds 
+        if (now - timeout >= limit) {
+            timeout = now;
+            callback()
+        }
+    };
+    return inner
+}
+
+const callThrottle = throttle(getData, 2000)
 
 
 
