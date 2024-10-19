@@ -39,12 +39,12 @@ function getData() {
     console.log('Button Clicked')
 }
 
-function throttle(callback, limit) {
+function throttle(callback, delay) {
     let timeout = 0;
 
     function inner() {
         const now = Date.now(); // current timestamp in milliseconds 
-        if (now - timeout >= limit) {
+        if (now - timeout >= delay) {
             timeout = now;
             callback()
         }
