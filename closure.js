@@ -18,3 +18,16 @@ function outerFunction() {
 
 const myClosure = outerFunction(); // outerFunction returns innerFunction
 myClosure(); // Outputs: "I am from outer function"
+..............................
+# Second Example 
+..............................
+function outerFunction(a) {
+    // console.log('click on like button', a)
+    var c = 1;
+    return function (b) {
+        return a + b + c
+    }
+}
+
+const result = outerFunction(12)
+console.log(result(5)) // 18
