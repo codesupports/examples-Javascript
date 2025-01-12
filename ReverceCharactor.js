@@ -4,6 +4,7 @@ const name = "Raj Kumar";
 name.split('').reverse().join('');
 // output 'ramuK jaR'
 
+---------------------------------
 // Second Way
 
 const reverseString =(str)=> {
@@ -16,3 +17,4 @@ const reverseString =(str)=> {
 }
 reverseString(name);
 // output 'ramuK jaR'
+
